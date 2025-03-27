@@ -3,6 +3,7 @@ package com.Game.Phases;
 import com.Game.model.Player;
 import com.Game.controller.GameController;
 import com.Game.view.CommandPromptView;
+import com.Game.model.Map;
 
 import java.util.List;
 
@@ -16,12 +17,13 @@ public abstract class Phase {
     /**
      * Starts the current phase with the provided game controller, players, and command prompt view.
      *
-     * @param p_gameController     the game controller handling the game state
-     * @param p_players            list of players participating in the game
-     * @param p_commandPromptView  view handling user interactions through the command prompt
-     * @param p_commandParts       the command parts passed as input
+     * @param p_gameController     the game controller handling the game state.
+     * @param p_players            list of players participating in the game.
+     * @param p_commandPromptView  view handling user interactions through the command prompt.
+     * @param p_commandParts       the command parts passed as input.
+     * @param p_gameMap            The game map containing all territories and their connections.
      */
-    public abstract void StartPhase(GameController p_gameController, List<Player> p_players, CommandPromptView p_commandPromptView, String[] p_commandParts);
+    public abstract void StartPhase(GameController p_gameController, List<Player> p_players, CommandPromptView p_commandPromptView, String[] p_commandParts, Map p_gameMap);
 
     /**
      * Transitions to the next game phase based on the specified phase type.

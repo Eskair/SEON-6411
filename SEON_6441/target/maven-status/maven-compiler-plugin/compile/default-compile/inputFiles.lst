@@ -1,6 +1,29 @@
-/Users/minaawadalla/Concordia/SOEN 6441 - Pop Kerolos/Project/P1/SEON-6441/SEON_6441/src/main/java/Main.java
-/Users/minaawadalla/Concordia/SOEN 6441 - Pop Kerolos/Project/P1/SEON-6441/SEON_6441/src/main/java/Map.java
-/Users/minaawadalla/Concordia/SOEN 6441 - Pop Kerolos/Project/P1/SEON-6441/SEON_6441/src/main/java/MapLoader.java
-/Users/minaawadalla/Concordia/SOEN 6441 - Pop Kerolos/Project/P1/SEON-6441/SEON_6441/src/main/java/Territory.java
-/Users/minaawadalla/Concordia/SOEN 6441 - Pop Kerolos/Project/P1/SEON-6441/SEON_6441/src/main/java/com/package1/classes/Class1.java
-/Users/minaawadalla/Concordia/SOEN 6441 - Pop Kerolos/Project/P1/SEON-6441/SEON_6441/src/main/java/com/package2/tests/Test1.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\DeployOrder.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\utils\MapLoader.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\Phases\OrderExecutionPhase.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\view\GameView.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\AdvanceMove.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\AirliftAttack.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\Player.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\Map.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\BlockadeOrder.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\Phases\PhaseType.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\controller\GamePlayController.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\command\DeployCommand.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\AdvanceOrder.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\view\CommandPromptView.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\Phases\StartupPhase.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\controller\GameController.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\BombOrder.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\GameEngineDriver.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\controller\MapEditorController.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\command\Command.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\CardType.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\AirliftOrder.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\NegotiateOrder.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\AirliftMove.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\AdvanceAttack.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\order\Order.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\model\Territory.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\Phases\IssueOrderPhase.java
+C:\Users\ubcas\Desktop\SEON-6441\SEON_6441\src\main\java\com\Game\Phases\Phase.java

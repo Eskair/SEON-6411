@@ -3,6 +3,7 @@ package com.Game.view;
 import com.Game.model.Map;
 import com.Game.model.Player;
 import com.Game.model.Territory;
+import com.Game.model.CardType;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -115,6 +116,11 @@ public class GameView {
             System.out.println("Player Name: " + l_player.getName());
             System.out.println("Total Territories Owned: " + l_player.getOwnedTerritories().size());
             System.out.println("Available Reinforcement Armies: " + l_player.getNbrOfReinforcementArmies());
+            
+            System.out.println("Cards Available:");
+            System.out.println(l_player.getFormattedCards());
+
+
             System.out.println("Territory Details:");
             for (Territory l_territory : l_player.getOwnedTerritories()) {
                 System.out.println("    - " + l_territory.getName() 
@@ -185,14 +191,34 @@ public class GameView {
     
     /**
      * Displays a player's territories.
-     * 
-     * @param p_territories The list of territories to display
+     *
+     * @param p_territories The list of territories owned by the player.
+     * @param p_player The player whose territories are being displayed.
+     * @param p_gameMap The game map containing all territories and their connections.
      */
-    public void displayPlayerTerritories(List<Territory> p_territories) {
+    public void displayPlayerTerritories(List<Territory> p_territories, Player p_player, Map p_gameMap) {
         System.out.println("Your territories:");
         for (int i = 0; i < p_territories.size(); i++) {
-            Territory l_t = p_territories.get(i);
-            System.out.println((i+1) + ". " + l_t.getName() + " (" + l_t.getNumOfArmies() + " armies)");
+            Territory l_territory = p_territories.get(i);
+            System.out.println((i+1) + ". " + l_territory.getName() + " (" + l_territory.getNumOfArmies() + " armies)");
+            List<Territory> neighbors = l_territory.getNeighborList();
+            System.out.print("		- Neighbors: ");
+            for (Territory l_neighbor : neighbors) {
+            	if(p_player.getOwnedTerritories().contains(l_neighbor)) {
+            		System.out.print(l_neighbor.getName() + "(Owned) || ");
+            	}
+            	else {
+            		if(l_neighbor.getOwner() != null) {
+            			System.out.print(l_neighbor.getName() + " (Enemy: "+ l_neighbor.getOwner().getName() +") || ");
+            		}
+            		else {
+            			System.out.print(l_neighbor.getName() + " (Neutral) || ");
+            		}
+            		
+            	}
+            	
+            }
+            System.out.println();
         }
     }
     

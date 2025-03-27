@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
@@ -13,15 +13,12 @@
     <description>Java module project for Javadoc generation</description>
 
     <properties>
-        <!-- Update if using a newer Java version -->
-        <maven.compiler.source>17</maven.compiler.source>  
-        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <!-- Set Java version -->
+        <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-
-        <sonar.organization>mina-awadalla-92-1</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <junit.jupiter.version>5.9.3</junit.jupiter.version>
     </properties>
-    
+
     <dependencies>
         <!-- JUnit 5 (Jupiter) -->
         <dependency>
@@ -30,46 +27,60 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Mockito for mocking in tests -->
+        <!-- Mockito inline (for inline mocking) -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>4.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Mockito core -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>4.11.0</version>
             <scope>test</scope>
         </dependency>
-
-        
-        <!-- Other dependencies your project needs -->
+        <!-- Add other dependencies as needed -->
     </dependencies>
 
-<build>
-    <plugins>
-    <!-- Javadoc plugin -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.3.1</version>
-            <executions>
-                <execution>
-                    <id>attach-javadocs</id>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-        <!-- Maven Surefire plugin to discover and run JUnit tests -->
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <!-- Maven Surefire Plugin for running tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M7</version>
                 <configuration>
-                    <!-- Helps avoid certain classloader issues -->
+                    <!-- Use the experimental Byte Buddy flag if needed -->
                     <useSystemClassLoader>false</useSystemClassLoader>
+                    <argLine>-Dnet.bytebuddy.experimental=true</argLine>
                 </configuration>
             </plugin>
-    </plugins>
+            <!-- Maven Javadoc Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
-
-
 </project>

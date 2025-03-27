@@ -4,6 +4,7 @@ import com.Game.model.Player;
 import com.Game.controller.GameController;
 import com.Game.model.order.Order;
 import com.Game.view.CommandPromptView;
+import com.Game.model.Map;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class OrderExecutionPhase extends Phase {
      * @param p_commandParts       the command parts passed as input
      */
     @Override
-    public void StartPhase(GameController p_gameController, List<Player> p_players, CommandPromptView p_commandPromptView, String[] p_commandParts) {
+    public void StartPhase(GameController p_gameController, List<Player> p_players, CommandPromptView p_commandPromptView, String[] p_commandParts, Map p_gameMap) {
 
         // Loop until all orders are executed
         boolean l_ordersRemaining = true;

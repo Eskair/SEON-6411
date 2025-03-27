@@ -3,6 +3,7 @@ package com.Game.Phases;
 import com.Game.controller.GameController;
 import com.Game.model.Player;
 import com.Game.view.CommandPromptView;
+import com.Game.model.Map;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class StartupPhase extends Phase {
      * @param p_commandParts       the command parts passed as input
      */
     @Override
-    public void StartPhase(GameController p_gameController, List<Player> p_players, CommandPromptView p_commandPromptView, String[] p_commandParts) {
+    public void StartPhase(GameController p_gameController, List<Player> p_players, CommandPromptView p_commandPromptView, String[] p_commandParts, Map p_gameMap) {
         if (p_commandParts.length < 3) {
             p_gameController.getView().displayError("Usage: gameplayer -add playerName OR gameplayer -remove playerName");
             return;

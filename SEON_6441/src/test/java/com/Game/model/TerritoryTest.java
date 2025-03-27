@@ -3,47 +3,64 @@ package com.Game.model;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-/**
- *  This test class covers the main methods of the Territory class, including its getters, setters, and utility 
- *  methods like addNeighbor, hasNeighbor, getEnemyNeighbors, and equals.
- */
-
-class TerritoryTest {
-
-    private Territory territory;
-    private Territory neighbor1;
-    private Territory neighbor2;
-    private Player player1;
-    private Player player2;
-
-    @BeforeEach
-    void setUp() {
-        // Create real Player objects
-        player1 = new Player("Player1");
-        player2 = new Player("Player2");
-
-        // Create Territory objects
-        territory = new Territory("Territory1", "Continent1", 5);
-        neighbor1 = new Territory("Neighbor1", "Continent1", 3);
-        neighbor2 = new Territory("Neighbor2", "Continent2", 2);
-
-        // Set ownership
-        territory.setOwner(player1);
-        neighbor1.setOwner(player1);
-        neighbor2.setOwner(player2);
-    }
+public class TerritoryTest {
 
     @Test
-    void testGetEnemyNeighbors() {
-        territory.addNeighbor(neighbor1);
-        territory.addNeighbor(neighbor2);
-
-        List<Territory> enemyNeighbors = territory.getEnemyNeighbors();
-        assertEquals(1, enemyNeighbors.size(), "There should be 1 enemy neighbor.");
-        assertTrue(enemyNeighbors.contains(neighbor2), "Neighbor2 should be an enemy neighbor.");
+    public void testGettersSetters() {
+        Territory t = new Territory("Alpha", "Continent", 3);
+        assertEquals("Alpha", t.getName());
+        assertEquals("Continent", t.getContinent());
+        assertEquals(3, t.getBonus());
+        t.setNumOfArmies(10);
+        assertEquals(10, t.getNumOfArmies());
+        Player p = new Player("John");
+        t.setOwner(p);
+        assertEquals(p, t.getOwner());
+        t.setNumOfReservedArmies(5);
+        assertEquals(5, t.getNumOfReservedArmies());
+    }
+    
+    @Test
+    public void testNeighborMethods() {
+        Territory t1 = new Territory("A", "Continent", 1);
+        Territory t2 = new Territory("B", "Continent", 1);
+        assertTrue(t1.getNeighborList().isEmpty());
+        t1.addNeighbor(t2);
+        assertTrue(t1.getNeighborList().contains(t2));
+        assertTrue(t1.hasNeighbor(t2));
+    }
+    
+    @Test
+    public void testGetEnemyNeighbors() {
+        Territory t1 = new Territory("A", "Continent", 1);
+        Territory t2 = new Territory("B", "Continent", 1);
+        Player p1 = new Player("John");
+        Player p2 = new Player("Doe");
+        t1.setOwner(p1);
+        t2.setOwner(p2);
+        t1.addNeighbor(t2);
+        List<Territory> enemyNeighbors = t1.getEnemyNeighbors();
+        assertEquals(1, enemyNeighbors.size());
+        assertEquals(t2, enemyNeighbors.get(0));
+        t2.setOwner(p1);
+        enemyNeighbors = t1.getEnemyNeighbors();
+        assertTrue(enemyNeighbors.isEmpty());
+    }
+    
+    @Test
+    public void testEqualsAndToString() {
+        Territory t1 = new Territory("A", "Continent", 1);
+        Territory t2 = new Territory("A", "Continent", 2); // Different bonus but equals depends on name and continent.
+        Territory t3 = new Territory("B", "Continent", 1);
+        assertTrue(t1.equals(t2));
+        assertFalse(t1.equals(t3));
+        
+        String str = t1.toString();
+        assertTrue(str.contains("Territory Name: A"));
+        assertTrue(str.contains("Continent: Continent"));
     }
 }

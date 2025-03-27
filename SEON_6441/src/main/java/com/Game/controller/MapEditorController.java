@@ -1,9 +1,13 @@
 package com.Game.controller;
 
-import java.io.BufferedReader;
-
+import com.Game.Phases.PhaseType;
 import com.Game.model.Map;
+import com.Game.model.Territory;
 import com.Game.utils.MapLoader;
+import com.Game.view.GameView;
+import com.Game.controller.GameController;
+
+import java.io.BufferedReader;
 
 /**
  * Controller class responsible for handling map editing operations.
@@ -80,7 +84,7 @@ public class MapEditorController {
             case "gameplayer":
                 // Transition to startup phase
                 d_gameController.setCurrentPhase(GameController.STARTUP_PHASE);
-                handleGamePlayer(p_commandParts);
+                d_gameController.setStartupPhase(d_gameController, p_commandParts);
                 break;
             default:
                 d_gameController.getView().displayError("Unknown command: " + p_command);
@@ -211,6 +215,7 @@ public class MapEditorController {
         }
         
         String l_mapFilePath = p_commandParts[1];
+        d_gameController.setMapFilePath(l_mapFilePath);
         d_mapLoader.resetLoadedMap();
 
         // Check if map exists
@@ -296,22 +301,5 @@ public class MapEditorController {
             d_gameMap = new Map();
             d_gameController.setGameMap(d_gameMap);
         }
-    }
-    
-    /**
-     * Handles the gameplayer command to add or remove players.
-     * 
-     * @param p_commandParts Array of command components
-     */
-    private void handleGamePlayer(String[] p_commandParts) {
-        if (p_commandParts.length < 3) {
-            d_gameController.getView().displayError("Usage: gameplayer -add playerName OR gameplayer -remove playerName");
-            return;
-        }
-        
-        String l_action = p_commandParts[1];
-        String l_playerName = p_commandParts[2];
-        
-        d_gameController.handleGamePlayer(l_action, l_playerName);
     }
 }
